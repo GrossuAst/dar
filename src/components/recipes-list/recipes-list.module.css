@@ -1,0 +1,27 @@
+.content {
+    /* margin-top: 1px; */
+    background: rgba(255, 255, 255, 0.5);
+    min-height: 796px;
+}
+
+.preloaderContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.list {
+    box-sizing: border-box;
+    padding: 12px;
+    margin: 0;
+    list-style: none;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 12px;
+    row-gap: 8px;
+}
+
+.listItem {
+    
+}
