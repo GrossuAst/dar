@@ -1,4 +1,5 @@
 import { apiConfig } from "./constants";
+import { BASE_URL } from "./constants";
 
 function checkRespone(res) {
     if(res.ok) {
@@ -8,8 +9,19 @@ function checkRespone(res) {
 };
 
 export function getAllRecipes() {
-    return fetch(apiConfig.url, {
+    return fetch(`${ BASE_URL + '?limit=0' }`, {
         method: 'GET',
         headers: apiConfig.headers
+    }).then((res) => {
+        return checkRespone(res);
     })
 };
+
+// export function getInfoAboutRecipe(id) {
+//     return fetch(`${ BASE_URL + '/' + `${ id }`}`, {
+//         method: 'GET',
+//         headers: apiConfig.headers
+//     }).then((res) => {
+//         return checkRespone(res);
+//     })
+// };

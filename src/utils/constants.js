@@ -1,5 +1,6 @@
+export const BASE_URL = 'https://dummyjson.com/recipes';
+
 export const apiConfig = {
-    url: 'https://dummyjson.com/recipes',
     headers: {
         'Content-Type': 'application/json',
         "Accept": "application/json",

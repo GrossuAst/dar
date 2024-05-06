@@ -5,7 +5,7 @@ import Header from '../../components/header';
 import MainMenu from '../../components/main-menu';
 import MainContent from '../../components/main-content';
 
-const Home = ({ isLoading }) => {
+const Home = ({ isLoading, recipesToShow }) => {
     const location = useLocation();
     const isMainPage = location.pathname === '/';
 
@@ -20,6 +20,7 @@ const Home = ({ isLoading }) => {
                             <MainMenu />
                             <MainContent 
                                 isLoading={ isLoading }
+                                recipesToShow={ recipesToShow }
                             />
                         </>
                     )

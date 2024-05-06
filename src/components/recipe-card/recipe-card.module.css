@@ -2,9 +2,14 @@
     border: 1px solid #f0f0f0;
     border-radius: 2px;
     max-width: 450px;
+    max-height: 352px;
     width: 100%;
     background: #fff;
     display: flex;
+}
+
+.card:hover {
+    cursor: pointer;
 }
 
 .container {
@@ -14,12 +19,15 @@
 }
 
 .title {
+    display: flex;
+    align-items: center;
     box-sizing: border-box;
     padding: 16px 24px 16px 23px;
     margin: 0;
     font-size: 16px;
     font-weight: 500;
-    line-height: 26px;
+    line-height: 16px;
+    height: 58px;
 }
 
 .image {
@@ -27,7 +35,7 @@
     background: #fafafa;
     height: 293px;
     width: 100%;
-    object-fit: contain;
+    object-fit: cover;
 }
 
 .descriptionContainer {

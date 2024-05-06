@@ -3,7 +3,7 @@ import styles from './main-content.module.css';
 import RecipesList from '../recipes-list';
 import Paging from '../paging';
 
-const MainContent = ({ isLoading }) => {
+const MainContent = ({ isLoading, recipesToShow }) => {
     return (
         <section className={ styles.mainContent }>
             <div className={ styles.contentHeader }>
@@ -14,6 +14,7 @@ const MainContent = ({ isLoading }) => {
             </div>
             <RecipesList 
                 isLoading={ isLoading }
+                recipesToShow={ recipesToShow }
             />
             <Paging />
         </section>

@@ -13,11 +13,31 @@ import { getAllRecipes } from '../../utils/api';
 
 const App = () => {
     const [isLoading, setLoading] = useState(false);
+    const [initialData, setInitialData] = useState([]);
+    const [recipesToShow, setRecipesToShow] = useState([]);
+
+    useEffect(() => {
+        getAllRecipes()
+            .then((res) => {
+                // console.log(res)
+                setInitialData(res.recipes);
+                setRecipesToShow(res.recipes);
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }, []);
 
     return (
         <div className={ styles.wrapper }>
             <Routes>
-                <Route path='/' element={ <Home isLoading={ isLoading } /> } >
+                <Route path='/' 
+                    element={ 
+                        <Home 
+                            isLoading={ isLoading } 
+                            recipesToShow={ recipesToShow }
+                        /> 
+                    } >
                     <Route path=':id' element={<RecipePage /> } />
                 </Route>
                 <Route path='*' />
