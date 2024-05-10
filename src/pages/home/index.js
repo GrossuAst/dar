@@ -14,7 +14,8 @@ const Home = ({ isLoading, recipesToShow, isError, retryGetData, currentRecipe }
             <Header 
                 currentRecipe={ currentRecipe }
             />
-            <main className={ styles.main }>
+            {/* <main className={ `${ styles.main }` } style={ !isMainPage && { max-width: 0 } }> */}
+            <main className={styles.main} style={!isMainPage ? { maxWidth: '100%' } : undefined}>
                 {!isMainPage && <Outlet />}
                 {
                     isMainPage && (

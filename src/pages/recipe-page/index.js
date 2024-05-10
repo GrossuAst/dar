@@ -6,8 +6,9 @@ import { useEffect, useState } from 'react';
 import Preloader from '../../components/ui/preloader';
 import MainRecipeInfo from '../../components/main-recipe-info';
 import MainRecipeInstruction from '../../components/main-recipe-instruction';
+import MainRecipeImage from '../../components/main-recipe-image';
 
-const RecipePage = ({ chooseCurrentRecipe }) => {
+const RecipePage = ({ chooseCurrentRecipe, recipesToShow }) => {
     const { id } = useParams();
     const [isLoading, setLoading] = useState(false);
     const [isError, setError] = useState(false);
@@ -15,7 +16,7 @@ const RecipePage = ({ chooseCurrentRecipe }) => {
 
     useEffect(() => {
         getRecipeData();
-    }, []);
+    }, [id]);
 
     function retryGetRecipeData() {
         getRecipeData();
@@ -38,6 +39,13 @@ const RecipePage = ({ chooseCurrentRecipe }) => {
             })
     };
 
+    // function getNextRecipeData() {
+    //     const currentIndex = recipesToShow.findIndex((recipe) => recipe.id === reciepeData.id);
+    //     if(currentIndex !== -1 && currentIndex < recipesToShow.length - 1) {
+    //         const nextRecipeId = recipesToShow[currentIndex + 1].id;
+    //     }
+    // };
+
     return (
         <>
             {
@@ -56,9 +64,10 @@ const RecipePage = ({ chooseCurrentRecipe }) => {
                         <MainRecipeInstruction 
                             reciepeData={ reciepeData }
                         />
-                        <section>
-
-                        </section>
+                        <MainRecipeImage 
+                            reciepeData={ reciepeData }
+                            recipesToShow={ recipesToShow }
+                        />
                     </section>    
                 )
             }

@@ -9,6 +9,7 @@ import NotFoundPage from '../../pages/not-found-page';
 import { getAllRecipes } from '../../utils/api';
 
 // предусмотреть прямой переход по ссылке с несуществующим айди рецепта
+// в компоненте RecipePage добавить защиту в случае получения ошибки при загрузке данных
 
 const App = () => {
     const location = useLocation();
@@ -72,6 +73,7 @@ const App = () => {
                         element={
                             <RecipePage 
                                 chooseCurrentRecipe={ chooseCurrentRecipe }
+                                recipesToShow={ recipesToShow }
                             /> 
                         } 
                     />
