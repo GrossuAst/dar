@@ -6,7 +6,7 @@ import WatchICon from '../../images/watch-icon.svg';
 
 import { Link } from 'react-router-dom';
 
-const RecipeCard = ({ id, title, image, difficulty, cookTimeMinutes, cuisine, mealType }) => {
+const RecipeCard = ({ id, title, image, difficulty, cookTimeMinutes, prepTimeMinutes, cuisine, mealType }) => {
 
     return (
         <Link to={`/${id}`} className={ styles.link }>
@@ -14,7 +14,6 @@ const RecipeCard = ({ id, title, image, difficulty, cookTimeMinutes, cuisine, me
                 <div className={ styles.container }>
                     <h4 className={ styles.title }>
                         { title }
-                        {/* Наименование блюда */}
                     </h4>
                     <img className={ styles.image } src={ image || Stub } alt={ `Фото блюда ${title}` }/>
                 </div>
@@ -29,7 +28,7 @@ const RecipeCard = ({ id, title, image, difficulty, cookTimeMinutes, cuisine, me
                         <div className={ styles.cookTimeMinutes }>
                             <img src={ WatchICon } />
                             <p className={ styles.text }>
-                                { cookTimeMinutes } минут    
+                                { cookTimeMinutes + prepTimeMinutes } минут    
                             </p>
                         </div>
                         <div className={ styles.difficulty }>

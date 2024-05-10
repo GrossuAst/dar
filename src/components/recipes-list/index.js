@@ -22,6 +22,7 @@ const RecipesList = ({ isLoading, recipesToShow, isError, retryGetData }) => {
                                         image={ recipe.image }
                                         difficulty={ recipe.difficulty }
                                         cookTimeMinutes={ recipe.cookTimeMinutes }
+                                        prepTimeMinutes={ recipe.prepTimeMinutes }
                                         cuisine={ recipe.cuisine }
                                         mealType={ recipe.mealType }
                                     />

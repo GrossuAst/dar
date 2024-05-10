@@ -1,0 +1,96 @@
+.mainInfoContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.infoContainer {
+    width: 463px;
+    border-radius: 1px;
+    border: 1px solid rgb(240, 240, 240);
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.title {
+    box-sizing: border-box;
+    padding: 16px 24px;
+    background-color: rgb(255, 255, 255);
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 22px;
+}
+
+.cuisine {
+    background-color: rgb(255, 255, 255);
+    margin: 0;
+    box-sizing: border-box;
+    padding: 24px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 23px;
+}
+
+.tags {
+    display: flex;
+    list-style: none;
+    color: rgba(0, 0, 0, 0.45);
+    background-color: rgb(255, 255, 255);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    margin: 0;
+    box-sizing: border-box;
+    padding: 24px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+}
+
+.tag {
+    margin: 0;
+}
+
+.calories {
+    margin: 0;
+    box-sizing: border-box;
+    padding: 24px;
+    display: flex;
+    gap: 9px;
+    flex-direction: column; 
+    background-color: rgb(255, 255, 255);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.perServing {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color: rgba(0, 0, 0, 0.45);
+}
+
+.servings {
+    background-color: rgb(255, 255, 255);
+    margin: 0;
+    box-sizing: border-box;
+    padding: 24px;
+    padding-bottom: 23px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+}
+
+.description {
+    background-color: rgb(255, 255, 255);
+    margin: 0;
+    min-height: 207px;
+    box-sizing: border-box;
+    padding: 24px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+}
