@@ -1,20 +1,28 @@
 import styles from './header.module.css';
 import Arrow from '../../images/arrow.svg';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
-const Header = () => {
+const Header = ({ currentRecipe }) => {
+    const navigate = useNavigate();
     const location = useLocation();
     const isMainPage = location.pathname === '/';
     const isRecipePage = location.pathname !== '/';
 
+    function handleArrowClick() {
+        navigate('/');
+    };
+
     return (
         <header className={ `${styles.header} ${isRecipePage && styles.recipePageHeader}` }>
             {
-                isRecipePage && <img src={ Arrow } className={ styles.arrow }/>
+                isRecipePage && 
+                <img src={ Arrow } className={ styles.arrow }
+                    onClick={ handleArrowClick }
+                />
             }
             <h1 className={ styles.title }>
                 {
-                    isMainPage ? 'Сборник рецептов из разных стран мира' : 'Наименование блюда длинное'
+                    isMainPage ? 'Сборник рецептов из разных стран мира' : currentRecipe ? currentRecipe : 'Наименование блюда'
                 }
             </h1>
         </header>

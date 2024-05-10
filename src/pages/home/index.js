@@ -5,15 +5,17 @@ import Header from '../../components/header';
 import MainMenu from '../../components/main-menu';
 import MainContent from '../../components/main-content';
 
-const Home = ({ isLoading, recipesToShow }) => {
+const Home = ({ isLoading, recipesToShow, isError, retryGetData, currentRecipe }) => {
     const location = useLocation();
     const isMainPage = location.pathname === '/';
 
     return (
         <>
-            <Header/>
+            <Header 
+                currentRecipe={ currentRecipe }
+            />
             <main className={ styles.main }>
-                {/* {!isMainPage && <Outlet />} */}
+                {!isMainPage && <Outlet />}
                 {
                     isMainPage && (
                         <>
@@ -21,11 +23,14 @@ const Home = ({ isLoading, recipesToShow }) => {
                             <MainContent 
                                 isLoading={ isLoading }
                                 recipesToShow={ recipesToShow }
+                                isError={ isError }
+                                retryGetData={ retryGetData }
                             />
+                            
                         </>
                     )
                 }
-
+                {/* {<Outlet />} */}
             </main>
         </>
     )

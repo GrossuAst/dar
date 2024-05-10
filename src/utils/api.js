@@ -17,11 +17,11 @@ export function getAllRecipes() {
     })
 };
 
-// export function getInfoAboutRecipe(id) {
-//     return fetch(`${ BASE_URL + '/' + `${ id }`}`, {
-//         method: 'GET',
-//         headers: apiConfig.headers
-//     }).then((res) => {
-//         return checkRespone(res);
-//     })
-// };
+export function getInfoAboutRecipe(id) {
+    return fetch(`${ BASE_URL + '/' + `${ id }`}`, {
+        method: 'GET',
+        headers: apiConfig.headers
+    }).then((res) => {
+        return checkRespone(res);
+    })
+};
