@@ -9,7 +9,7 @@ const MainContent = ({ isLoading, recipesToShow, isError, retryGetData }) => {
             <div className={ styles.contentHeader }>
                 <h2 className={ styles.contentTitle }>
                     Найденные рецепты
-                    <span className={ styles.number }>299</span>
+                    <span className={ styles.number }>{ recipesToShow.length }</span>
                 </h2>    
             </div>
             <RecipesList 

@@ -13,3 +13,11 @@
     src: url('./roboto/Roboto-Regular.woff') format('woff'),
         url('./roboto/Roboto-Regular.woff2') format('woff2');
 }
+
+@font-face {
+    font-family: 'Roboto';
+    font-weight:700;
+    font-style: normal;
+    src: url('./roboto/Roboto-Bold.woff') format('woff'),
+        url('./roboto/Roboto-Bold.woff2') format('woff2');
+}

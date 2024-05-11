@@ -8,7 +8,7 @@ import MainRecipeInfo from '../../components/main-recipe-info';
 import MainRecipeInstruction from '../../components/main-recipe-instruction';
 import MainRecipeImage from '../../components/main-recipe-image';
 
-const RecipePage = ({ chooseCurrentRecipe, recipesToShow }) => {
+const RecipePage = ({ chooseCurrentRecipe, recipesToShow, setCurrentRecipe }) => {
     const { id } = useParams();
     const [isLoading, setLoading] = useState(false);
     const [isError, setError] = useState(false);
@@ -16,7 +16,7 @@ const RecipePage = ({ chooseCurrentRecipe, recipesToShow }) => {
 
     useEffect(() => {
         getRecipeData();
-    }, [id]);
+    }, []);
 
     function retryGetRecipeData() {
         getRecipeData();
@@ -39,13 +39,6 @@ const RecipePage = ({ chooseCurrentRecipe, recipesToShow }) => {
             })
     };
 
-    // function getNextRecipeData() {
-    //     const currentIndex = recipesToShow.findIndex((recipe) => recipe.id === reciepeData.id);
-    //     if(currentIndex !== -1 && currentIndex < recipesToShow.length - 1) {
-    //         const nextRecipeId = recipesToShow[currentIndex + 1].id;
-    //     }
-    // };
-
     return (
         <>
             {
@@ -66,7 +59,9 @@ const RecipePage = ({ chooseCurrentRecipe, recipesToShow }) => {
                         />
                         <MainRecipeImage 
                             reciepeData={ reciepeData }
+                            setRecipeData={ setRecipeData }
                             recipesToShow={ recipesToShow }
+                            setCurrentRecipe={ setCurrentRecipe }
                         />
                     </section>    
                 )

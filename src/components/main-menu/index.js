@@ -1,6 +1,8 @@
 import styles from './main-menu.module.css';
 
-const MainMenu = () => {
+import Filter from '../filter';
+
+const MainMenu = ({ initialData, setCuisine, cuisine, mealType, setMealType }) => {
     return (
         <>
         <section className={ styles.mainMenu }>
@@ -18,6 +20,13 @@ const MainMenu = () => {
                     Наш сервис поможет: выбирайте параметры - и вперед!
                 </p>
             </div>
+            <Filter 
+                initialData={ initialData }
+                setCuisine={ setCuisine }
+                cuisine={ cuisine }
+                mealType={ mealType }
+                setMealType={ setMealType }
+            />
         </section>
         </>
     )

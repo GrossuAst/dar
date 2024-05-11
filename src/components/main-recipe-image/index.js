@@ -2,13 +2,16 @@ import styles from './main-recipe-image.module.css';
 
 import { useNavigate } from 'react-router-dom';
 
-const MainRecipeImage = ({ reciepeData, recipesToShow }) => {
+const MainRecipeImage = ({ reciepeData, setRecipeData, recipesToShow, setCurrentRecipe }) => {
     const navigate = useNavigate();
 
     function getNextRecipe() {
         const index = reciepeData && findIndexById(recipesToShow, reciepeData.id);
         if (index !== -1 && index < recipesToShow.length - 1) {
             const nextRecipeId = recipesToShow[index + 1].id;
+            const nextRecipeData = recipesToShow[index + 1];
+            setRecipeData(nextRecipeData);
+            setCurrentRecipe(nextRecipeData.name);
             navigate(`/${nextRecipeId}`);
         }
     };
@@ -17,6 +20,9 @@ const MainRecipeImage = ({ reciepeData, recipesToShow }) => {
         const index = reciepeData && findIndexById(recipesToShow, reciepeData.id);
         if(index > 0) { 
             const prevRecipeId = recipesToShow[index - 1].id;
+            const prevRecipeData = recipesToShow[index - 1];
+            setRecipeData(prevRecipeData);
+            setCurrentRecipe(prevRecipeData.name);
             navigate(`/${prevRecipeId}`);
         }
     };

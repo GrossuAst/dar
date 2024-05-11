@@ -9,7 +9,7 @@ import NotFoundPage from '../../pages/not-found-page';
 import { getAllRecipes } from '../../utils/api';
 
 // предусмотреть прямой переход по ссылке с несуществующим айди рецепта
-// в компоненте RecipePage добавить защиту в случае получения ошибки при загрузке данных
+// в компоненте RecipePage добавить защиту в случае получения ошибки при загрузке данных и функцию повторного запроса
 
 const App = () => {
     const location = useLocation();
@@ -21,6 +21,32 @@ const App = () => {
     const [initialData, setInitialData] = useState([]);
     const [recipesToShow, setRecipesToShow] = useState([]);
     const [currentRecipe, setCurrentRecipe] = useState(null);
+    // filter state
+    const [cuisine, setCuisine] = useState('Все страны и регионы');
+    const [mealType, setMealType] = useState('Все типы');
+    const [difficulty, setDifficulty] = useState('Любая');
+
+    useEffect(() => {
+        filterRecipes();
+    }, [cuisine, mealType, difficulty]);
+
+    function filterRecipes() {
+        let filteredRecipes = initialData.slice();
+
+        if (cuisine !== 'Все страны и регионы') {
+            filteredRecipes = filteredRecipes.filter((item) => item.cuisine === cuisine);
+        }
+    
+        if (mealType !== 'Все типы') {
+            filteredRecipes = filteredRecipes.filter((item) => item.mealType.includes(mealType));
+        }
+    
+        if (difficulty !== 'Любая') {
+            filteredRecipes = filteredRecipes.filter((item) => item.difficulty === difficulty);
+        }
+    
+        setRecipesToShow(filteredRecipes);
+    };
 
     useEffect(() => {
         getData();
@@ -28,7 +54,7 @@ const App = () => {
 
     useEffect(() => {
         isMainPage && currentRecipe && setCurrentRecipe(null);
-    });
+    }); 
 
     function retryGetData() {
         getData();
@@ -66,6 +92,12 @@ const App = () => {
                             isError={ isError }
                             retryGetData={ retryGetData }
                             currentRecipe={ currentRecipe }
+                            initialData={ initialData }
+
+                            setCuisine={ setCuisine }
+                            cuisine={ cuisine }
+                            mealType={ mealType }
+                            setMealType={ setMealType }
                         /> 
                     } 
                 >
@@ -74,6 +106,7 @@ const App = () => {
                             <RecipePage 
                                 chooseCurrentRecipe={ chooseCurrentRecipe }
                                 recipesToShow={ recipesToShow }
+                                setCurrentRecipe={ setCurrentRecipe }
                             /> 
                         } 
                     />

@@ -1,0 +1,96 @@
+.filterContainer {
+    display: flex;
+    flex-direction: column;
+    margin-top: 33px;
+    gap: 17.5px;
+}
+
+.dropdownContainer {
+    display: flex;
+    justify-content: end;
+    align-items: start;
+    gap: 12px;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdownTitle {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 38px;
+}
+
+.dropdownBtn {
+    width: 285px;
+    box-sizing: border-box;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.85);
+    border: 1px solid rgb(217, 217, 217);
+    border-radius: 2px;
+    cursor: pointer;
+    line-height: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.arrow {
+    width: 10px;
+    height: 10px;
+    background: url('../../images/selector-arrow.svg') center no-repeat;
+    align-self: center;
+    transition: transform 0.4s ease;
+}
+
+.arrowOpened {
+    transform: rotateX(180deg);
+}
+
+.dropdownContent {
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    height: 230px;
+    overflow-y: scroll;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    background: rgb(255, 255, 255);
+    border-radius: 2px;
+    box-shadow: 0px 9px 28px 8px rgba(0, 0, 0, 0.05),0px 6px 16px 0px rgba(0, 0, 0, 0.08),0px 3px 6px -4px rgba(0, 0, 0, 0.12);
+}
+
+.dropdownItem {
+    box-sizing: border-box;
+    padding: 5px 12px;
+}
+
+.dropdownItem:hover {
+    background: rgb(245, 245, 245);
+    cursor: pointer;
+}
+
+.itemText {
+    margin: 0;
+}
+
+.dropdownContent::-webkit-scrollbar {
+    width: 10px;
+}
+
+.dropdownContent::-webkit-scrollbar-track {
+    background-color: #ffffff;
+}
+
+.dropdownContent::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 5px;
+}
+
+.dropdownContent::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
