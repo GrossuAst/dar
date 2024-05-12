@@ -19,19 +19,24 @@ const Paging = ({ setCurrentPage, currentPage, totalPages }) => {
 
     return (
         <section className={ styles.paging }>
-            <div className={ styles.container }>
-                <div className={ `${styles.button} ${styles.leftButton}` } onClick={ () => handlePageChange(currentPage - 1) } />
+            {
+                totalPages > 1 && (
+                    <div className={ styles.container }>
+                    <div className={ `${styles.button} ${styles.leftButton}` } onClick={ () => handlePageChange(currentPage - 1) } />
 
-                <div className={ `${styles.button} ${styles.firstPage}` } onClick={ () => getFirstPage() } >1</div>
+                    <div className={ `${styles.button} ${styles.firstPage} ${currentPage === 1 && styles.activePage}`} onClick={ () => getFirstPage() } >1</div>
 
-                        <div className={ `${styles.button} ${styles.activePage}`  }>
-                            { currentPage }
-                        </div>
+                            <div className={ `${styles.button} ${ currentPage !== 1 && currentPage !==totalPages && styles.activePage} `  }>
+                                { currentPage }
+                            </div>
 
-                <div className={ `${styles.button} ${styles.lastPage}` } onClick={ () => getLastPage() } >{ totalPages }</div>
+                    <div className={ `${styles.button} ${styles.lastPage} ${currentPage === totalPages && styles.activePage}` } onClick={ () => getLastPage() } >{ totalPages }</div>
 
-                <div className={ `${styles.button} ${styles.rightButton}` } onClick={ () => handlePageChange(currentPage + 1) } />
-            </div>
+                    <div className={ `${styles.button} ${styles.rightButton}` } onClick={ () => handlePageChange(currentPage + 1) } />
+                    </div>    
+                )
+            }
+
         </section>
     )
 };
