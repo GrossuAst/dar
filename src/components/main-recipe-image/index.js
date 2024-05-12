@@ -2,7 +2,7 @@ import styles from './main-recipe-image.module.css';
 
 import { useNavigate } from 'react-router-dom';
 
-const MainRecipeImage = ({ reciepeData, setRecipeData, recipesToShow, setCurrentRecipe }) => {
+const MainRecipeImage = ({ reciepeData, setRecipeData, recipesToShow, setCurrentRecipe, isRandomRecipeGenerated }) => {
     const navigate = useNavigate();
 
     function getNextRecipe() {

@@ -8,7 +8,7 @@ import MainRecipeInfo from '../../components/main-recipe-info';
 import MainRecipeInstruction from '../../components/main-recipe-instruction';
 import MainRecipeImage from '../../components/main-recipe-image';
 
-const RecipePage = ({ chooseCurrentRecipe, recipesToShow, setCurrentRecipe }) => {
+const RecipePage = ({ chooseCurrentRecipe, recipesToShow, setCurrentRecipe, isRandomRecipeGenerated }) => {
     const { id } = useParams();
     const [isLoading, setLoading] = useState(false);
     const [isError, setError] = useState(false);
@@ -62,6 +62,7 @@ const RecipePage = ({ chooseCurrentRecipe, recipesToShow, setCurrentRecipe }) =>
                             setRecipeData={ setRecipeData }
                             recipesToShow={ recipesToShow }
                             setCurrentRecipe={ setCurrentRecipe }
+                            isRandomRecipeGenerated={ isRandomRecipeGenerated }
                         />
                     </section>    
                 )

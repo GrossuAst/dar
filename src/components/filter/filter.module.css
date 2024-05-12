@@ -180,3 +180,26 @@
 .resetButton:hover {
     opacity: 0.7;
 }
+
+.randomContainer {
+    margin-top: 51px;
+}
+
+.randomText {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 400;
+    color: rgb(0, 0, 0);
+}
+
+.randomButton {
+    background: none;
+    border: 1px solid rgb(217, 217, 217);
+    box-sizing: border-box;
+    padding: 7px 16px 7px 17px;
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.85);
+    margin-top: 27px;
+    cursor: pointer;
+}

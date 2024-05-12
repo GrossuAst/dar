@@ -6,6 +6,7 @@ import MainMenu from '../../components/main-menu';
 import MainContent from '../../components/main-content';
 
 const Home = ({
+    setRecipesToShow,
     isLoading,
     recipesToShow, 
     isError, 
@@ -17,7 +18,8 @@ const Home = ({
     mealType,
     setMealType,
     difficulty,
-    setDifficulty
+    setDifficulty,
+    getRandomRecipe
 }) => {
     const location = useLocation();
     const isMainPage = location.pathname === '/';
@@ -32,6 +34,7 @@ const Home = ({
                             (
                                 <>
                                     <MainMenu 
+                                        setRecipesToShow={ setRecipesToShow }
                                         initialData={ initialData }
                                         setCuisine={ setCuisine }
                                         cuisine={ cuisine }
@@ -39,6 +42,7 @@ const Home = ({
                                         setMealType={ setMealType }
                                         difficulty={ difficulty }
                                         setDifficulty={ setDifficulty }
+                                        getRandomRecipe={ getRandomRecipe }
                                     />
                                     <MainContent 
                                         isLoading={ isLoading }

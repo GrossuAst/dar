@@ -1,7 +1,7 @@
 import styles from './filter.module.css';
 import { useState, useEffect } from 'react';
 
-const Filter = ({ initialData, setCuisine, cuisine, mealType, setMealType, difficulty, setDifficulty }) => {
+const Filter = ({ setRecipesToShow, initialData, setCuisine, cuisine, mealType, setMealType, difficulty, setDifficulty, getRandomRecipe }) => {
     const cuisines = [...new Set(initialData.map(item => item.cuisine))];
     cuisines.sort((a, b) => a.localeCompare(b));
     cuisines.unshift('Все страны и регионы');
@@ -33,9 +33,10 @@ const Filter = ({ initialData, setCuisine, cuisine, mealType, setMealType, diffi
     };
 
     function resetFilter() {
+        setCuisine('Все страны и регионы');
         setMealType('Все типы');
         setDifficulty('Любая');
-        setCuisine('Все страны и регионы');
+        setRecipesToShow(initialData);
     };
 
     function handleRegionButtonClick() {
@@ -124,6 +125,7 @@ const Filter = ({ initialData, setCuisine, cuisine, mealType, setMealType, diffi
                     <h3 className={ styles.radioTitle }>Сложность приготовления:</h3>
                     <div className={ styles.radio }>
                             <label className={ `${ styles.label } ${ difficulty === 'Любая' && styles.activeLabel }`  } 
+
                                 onChange={ () => changeDifficulty('Любая') }
                             >
                                 <input 
@@ -180,6 +182,14 @@ const Filter = ({ initialData, setCuisine, cuisine, mealType, setMealType, diffi
             >
                 Сбросить все фильтры                
             </button>
+            <div className={ styles.randomContainer }>
+                <p className={ styles.randomText }>
+                    А еще можно попробовать на вкус удачу
+                </p>                
+                <button className={ styles.randomButton } onClick={ () => getRandomRecipe() } >
+                    Мне повезёт!
+                </button>
+            </div>
         </div>
     )
 };

@@ -1,6 +1,7 @@
 import styles from './app.module.css';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Home from '../../pages/home';
 import RecipePage from '../../pages/recipe-page';
@@ -12,6 +13,7 @@ import { getAllRecipes } from '../../utils/api';
 // в компоненте RecipePage добавить защиту в случае получения ошибки при загрузке данных и функцию повторного запроса
 
 const App = () => {
+    const navigate = useNavigate();
     const location = useLocation();
     const isMainPage = location.pathname === '/';
     // ui
@@ -25,6 +27,8 @@ const App = () => {
     const [cuisine, setCuisine] = useState('Все страны и регионы');
     const [mealType, setMealType] = useState('Все типы');
     const [difficulty, setDifficulty] = useState('Любая');
+    // флаги
+    const [isRandomRecipeGenerated, setRandomRecipeGenerated] = useState(false);
 
     useEffect(() => {
         filterRecipes();
@@ -32,21 +36,29 @@ const App = () => {
 
     function filterRecipes() {
         let filteredRecipes = initialData.slice();
-
-        if (cuisine !== 'Все страны и регионы') {
-            filteredRecipes = filteredRecipes.filter((item) => item.cuisine === cuisine);
-        }
-    
-        if (mealType !== 'Все типы') {
-            filteredRecipes = filteredRecipes.filter((item) => item.mealType.includes(mealType));
-        }
-    
-        if (difficulty !== 'Любая') {
-            filteredRecipes = filteredRecipes.filter((item) => item.difficulty === difficulty);
-        }
-    
-        setRecipesToShow(filteredRecipes);
+            if (cuisine !== 'Все страны и регионы') {
+                filteredRecipes = filteredRecipes.filter((item) => item.cuisine === cuisine);
+            }
+        
+            if (mealType !== 'Все типы') {
+                filteredRecipes = filteredRecipes.filter((item) => item.mealType.includes(mealType));
+            }
+        
+            if (difficulty !== 'Любая') {
+                filteredRecipes = filteredRecipes.filter((item) => item.difficulty === difficulty);
+            }
+            setRecipesToShow(filteredRecipes);    
     };
+
+    function getRandomRecipe() {
+        const randomIndex = Math.floor(Math.random() * initialData.length);
+        const randomRecipe = initialData[randomIndex];
+        navigate(`/${randomRecipe.id}`);
+    };
+
+    useEffect(() => {
+        setRandomRecipeGenerated(false);
+    }, []);
 
     useEffect(() => {
         getData();
@@ -87,6 +99,7 @@ const App = () => {
                 <Route path='/' 
                     element={
                         <Home 
+                            setRecipesToShow={ setRecipesToShow }
                             isLoading={ isLoading } 
                             recipesToShow={ recipesToShow }
                             isError={ isError }
@@ -100,6 +113,8 @@ const App = () => {
                             setMealType={ setMealType }
                             difficulty={ difficulty }
                             setDifficulty={ setDifficulty }
+
+                            getRandomRecipe={ getRandomRecipe }
                         /> 
                     } 
                 >
@@ -109,6 +124,7 @@ const App = () => {
                                 chooseCurrentRecipe={ chooseCurrentRecipe }
                                 recipesToShow={ recipesToShow }
                                 setCurrentRecipe={ setCurrentRecipe }
+                                isRandomRecipeGenerated={ isRandomRecipeGenerated }
                             /> 
                         } 
                     />
