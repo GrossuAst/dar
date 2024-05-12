@@ -19,7 +19,10 @@ const Home = ({
     setMealType,
     difficulty,
     setDifficulty,
-    getRandomRecipe
+    getRandomRecipe,
+    currentPage,
+    setCurrentPage,
+    totalPages
 }) => {
     const location = useLocation();
     const isMainPage = location.pathname === '/';
@@ -49,6 +52,9 @@ const Home = ({
                                         recipesToShow={ recipesToShow }
                                         isError={ isError }
                                         retryGetData={ retryGetData }
+                                        currentPage={ currentPage }
+                                        setCurrentPage={ setCurrentPage }
+                                        totalPages={ totalPages }
                                     />
                             
                                 </>

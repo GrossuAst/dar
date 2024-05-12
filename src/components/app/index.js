@@ -29,12 +29,21 @@ const App = () => {
     const [difficulty, setDifficulty] = useState('Любая');
     // флаги
     const [isRandomRecipeGenerated, setRandomRecipeGenerated] = useState(false);
+    // пагинация
+    const [totalPages, setTotalPages] = useState(null);
+    const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
         filterRecipes();
     }, [cuisine, mealType, difficulty]);
 
+    useEffect(() => {
+        const totalItems = recipesToShow.length;
+        setTotalPages(Math.ceil(totalItems / 6));
+    }, [recipesToShow]);
+
     function filterRecipes() {
+        setCurrentPage(1);
         let filteredRecipes = initialData.slice();
             if (cuisine !== 'Все страны и регионы') {
                 filteredRecipes = filteredRecipes.filter((item) => item.cuisine === cuisine);
@@ -115,6 +124,10 @@ const App = () => {
                             setDifficulty={ setDifficulty }
 
                             getRandomRecipe={ getRandomRecipe }
+
+                            currentPage={ currentPage }
+                            setCurrentPage={ setCurrentPage }
+                            totalPages={ totalPages }
                         /> 
                     } 
                 >

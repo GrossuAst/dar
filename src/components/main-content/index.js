@@ -3,7 +3,7 @@ import styles from './main-content.module.css';
 import RecipesList from '../recipes-list';
 import Paging from '../paging';
 
-const MainContent = ({ isLoading, recipesToShow, isError, retryGetData }) => {
+const MainContent = ({ isLoading, recipesToShow, isError, retryGetData, currentPage, setCurrentPage, totalPages }) => {
     return (
         <section className={ styles.mainContent }>
             <div className={ styles.contentHeader }>
@@ -17,8 +17,10 @@ const MainContent = ({ isLoading, recipesToShow, isError, retryGetData }) => {
                 recipesToShow={ recipesToShow }
                 isError={ isError }
                 retryGetData={ retryGetData }
+                currentPage={ currentPage }
+                setCurrentPage={ setCurrentPage }
+                totalPages={ totalPages }
             />
-            <Paging />
         </section>
     )
 };

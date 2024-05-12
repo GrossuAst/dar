@@ -2,6 +2,9 @@
     /* margin-top: 1px; */
     background: rgba(255, 255, 255, 0.5);
     min-height: 796px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .preloaderContainer {
