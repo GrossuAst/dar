@@ -98,6 +98,8 @@ const App = () => {
                             cuisine={ cuisine }
                             mealType={ mealType }
                             setMealType={ setMealType }
+                            difficulty={ difficulty }
+                            setDifficulty={ setDifficulty }
                         /> 
                     } 
                 >

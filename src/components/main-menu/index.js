@@ -2,7 +2,7 @@ import styles from './main-menu.module.css';
 
 import Filter from '../filter';
 
-const MainMenu = ({ initialData, setCuisine, cuisine, mealType, setMealType }) => {
+const MainMenu = ({ initialData, setCuisine, cuisine, mealType, setMealType, difficulty, setDifficulty }) => {
     return (
         <>
         <section className={ styles.mainMenu }>
@@ -26,6 +26,8 @@ const MainMenu = ({ initialData, setCuisine, cuisine, mealType, setMealType }) =
                 cuisine={ cuisine }
                 mealType={ mealType }
                 setMealType={ setMealType }
+                difficulty={ difficulty }
+                setDifficulty={ setDifficulty }
             />
         </section>
         </>

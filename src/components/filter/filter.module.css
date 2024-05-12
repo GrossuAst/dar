@@ -1,8 +1,15 @@
 .filterContainer {
+    /* display: flex;
+    flex-direction: column;
+    margin-top: 33px;
+    gap: 17.5px; */
+}
+
+.dropdownGroup {
     display: flex;
     flex-direction: column;
     margin-top: 33px;
-    gap: 17.5px;
+    gap: 18px;
 }
 
 .dropdownContainer {
@@ -93,4 +100,83 @@
 
 .dropdownContent::-webkit-scrollbar-thumb:hover {
     background-color: #555;
+}
+
+.radioContainer {
+    display: flex;
+    flex-direction: row;
+    text-align: right;
+    gap: 12px;
+}
+
+.radio {
+    margin-top: 2px;
+    display: flex;
+    border: 1px solid rgb(217, 217, 217);
+    border-radius: 2px;
+    width: 488px;
+    height: 38px;
+}
+
+.defaultRadio {
+    display: none;
+}
+
+.label {
+    box-sizing: border-box;
+    padding-top: 3px;
+    width: 100%;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-right: 1px solid rgb(217, 217, 217);
+}
+
+.label:first-of-type {
+    border-top-left-radius: 1px;
+    border-bottom-left-radius: 1px;
+}
+
+.label:last-of-type {
+    border-top-right-radius: 1px;
+    border-bottom-right-radius: 1px;
+    border-right: none;
+}
+
+.activeLabel {
+    background-color: rgb(24, 144, 255);
+    outline: 1px solid rgb(24, 144, 255);
+    color: rgb(255, 255, 255);
+    border: none;
+}
+
+.disabledLabel {
+    color: rgb(217, 217, 217);
+    cursor: default;
+}
+
+.radioTitle {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0;
+    line-height: 24px;
+}
+
+.resetButton {
+    margin-top: 20px;
+    padding: 0;
+    border: none;
+    background: none;
+    font-size: 14px;
+    font-weight: 400;
+    color: #1890FF;
+    cursor: pointer;
+}
+
+.resetButton:hover {
+    opacity: 0.7;
 }

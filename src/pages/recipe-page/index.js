@@ -47,8 +47,8 @@ const RecipePage = ({ chooseCurrentRecipe, recipesToShow, setCurrentRecipe }) =>
                     <section className={ styles.preloaderContainer }>
                         <Preloader />
                     </section>
-                ) 
-                :
+                ) :
+                !reciepeData ? (<>По такому адресу рецепт не найден</>) :
                 (
                     <section className={ styles.recipeSection }>
                         <MainRecipeInfo 

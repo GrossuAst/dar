@@ -11,6 +11,7 @@ const RecipesList = ({ isLoading, recipesToShow, isError, retryGetData }) => {
             {
                 isLoading && !isError ? <Preloader /> :
                 isError && !isLoading ? <ErrorMessage retryGetData={ retryGetData } /> :
+                recipesToShow.length === 0 ? (<p className={ styles.empty }>По вашему запросу ничего не найдено</p>) :
                 (
                     <ul className={ styles.list }>
                         {
@@ -32,27 +33,6 @@ const RecipesList = ({ isLoading, recipesToShow, isError, retryGetData }) => {
                     </ul>
                 )
             }
-
-            {/* <ul className={ styles.list }>
-                <li className={ styles.listItem }>
-                    <RecipeCard />
-                </li>
-                <li className={ styles.listItem }>
-                    <RecipeCard />
-                </li>
-                <li className={ styles.listItem }>
-                    <RecipeCard />
-                </li>
-                <li className={ styles.listItem }>
-                    <RecipeCard />
-                </li>
-                <li className={ styles.listItem }>
-                    <RecipeCard />
-                </li>
-                <li className={ styles.listItem }>
-                    <RecipeCard />
-                </li>
-            </ul> */}
         </section>
     )
 };
