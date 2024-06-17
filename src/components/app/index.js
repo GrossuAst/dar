@@ -9,11 +9,21 @@ import NotFoundPage from '../../pages/not-found-page';
 
 import { getAllRecipes } from '../../utils/api';
 
+import { getInitialRecipes } from '../../services/initial-recipes/action';
+import { useDispatch } from 'react-redux';
+import { useSelector, shallowEqual } from "react-redux";
+
 // предусмотреть прямой переход по ссылке с несуществующим айди рецепта
 // в компоненте RecipePage добавить защиту в случае получения ошибки при загрузке данных и функцию повторного запроса
 
 const App = () => {
+    const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    useEffect(() => {
+        dispatch(getInitialRecipes());
+    }, []);
+
     const location = useLocation();
     const isMainPage = location.pathname === '/';
     // ui

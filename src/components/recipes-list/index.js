@@ -11,8 +11,6 @@ const RecipesList = ({ isLoading, recipesToShow, isError, retryGetData, currentP
     const endIndex = Math.min(startIndex + itemsPerPage, recipesToShow.length);
     const currentItems = recipesToShow.slice(startIndex, endIndex);
 
-    console.log(currentItems)
-
     return (
         <section className={ `${styles.content} ${isLoading && styles.preloaderContainer}` }>
             {
