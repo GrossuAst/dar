@@ -1,9 +1,16 @@
 import styles from './main-content.module.css';
-
 import RecipesList from '../recipes-list';
-import Paging from '../paging';
+
+import { getInitialRecipes } from '../../services/initial-recipes/action';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 
 const MainContent = ({ isLoading, recipesToShow, isError, retryGetData, currentPage, setCurrentPage, totalPages }) => {
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(getInitialRecipes());
+    }, []);
+
     return (
         <section className={ styles.mainContent }>
             <div className={ styles.contentHeader }>

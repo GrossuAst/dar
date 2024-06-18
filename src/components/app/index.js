@@ -9,7 +9,6 @@ import NotFoundPage from '../../pages/not-found-page';
 
 import { getAllRecipes } from '../../utils/api';
 
-import { getInitialRecipes } from '../../services/initial-recipes/action';
 import { useDispatch } from 'react-redux';
 import { useSelector, shallowEqual } from "react-redux";
 
@@ -19,10 +18,6 @@ import { useSelector, shallowEqual } from "react-redux";
 const App = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
-    useEffect(() => {
-        dispatch(getInitialRecipes());
-    }, []);
 
     const location = useLocation();
     const isMainPage = location.pathname === '/';
@@ -79,9 +74,9 @@ const App = () => {
         setRandomRecipeGenerated(false);
     }, []);
 
-    useEffect(() => {
-        getData();
-    }, []);
+    // useEffect(() => {
+        // getData();
+    // }, []);
 
     useEffect(() => {
         isMainPage && currentRecipe && setCurrentRecipe(null);

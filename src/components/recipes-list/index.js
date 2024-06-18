@@ -5,25 +5,32 @@ import ErrorMessage from '../ui/error-message';
 import RecipeCard from '../recipe-card';
 import Paging from '../paging';
 
+import { useSelector, useDispatch, shallowEqual } from 'react-redux';
+
 const RecipesList = ({ isLoading, recipesToShow, isError, retryGetData, currentPage, setCurrentPage, totalPages }) => {
-    const itemsPerPage = 6;
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    const endIndex = Math.min(startIndex + itemsPerPage, recipesToShow.length);
-    const currentItems = recipesToShow.slice(startIndex, endIndex);
+    const { initialRecipes } = useSelector((store) => ({
+        initialRecipes: store.recipes.initialRecipes
+    }), shallowEqual);
+    console.log(initialRecipes)
+
+    // const itemsPerPage = 6;
+    // const startIndex = (currentPage - 1) * itemsPerPage;
+    // const endIndex = Math.min(startIndex + itemsPerPage, recipesToShow.length);
+    // const currentItems = recipesToShow.slice(startIndex, endIndex);
 
     return (
         <section className={ `${styles.content} ${isLoading && styles.preloaderContainer}` }>
             {
-                isLoading && !isError ? <Preloader /> :
-                isError && !isLoading ? <ErrorMessage retryGetData={ retryGetData } /> :
-                recipesToShow.length === 0 ? (<p className={ styles.empty }>По вашему запросу ничего не найдено</p>) :
+                // isLoading && !isError ? <Preloader /> :
+                // isError && !isLoading ? <ErrorMessage retryGetData={ retryGetData } /> :
+                // recipesToShow.length === 0 ? (<p className={ styles.empty }>По вашему запросу ничего не найдено</p>) :
                 (
                     <>
                         <ul className={ styles.list }>
                             {
-                                currentItems.length > 0 && currentItems.map((recipe) => (
+                                initialRecipes.length > 0 && initialRecipes.map((recipe) => (
                                     <li key={ recipe.id }>
-                                        <RecipeCard 
+                                        <RecipeCard
                                             id={ recipe.id }
                                             title={ recipe.name }
                                             image={ recipe.image }
